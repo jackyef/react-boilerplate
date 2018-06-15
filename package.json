@@ -4,6 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "yarn build-server && yarn build-client",
+    "build-server": "babel src/server --out-dir ./dist",
+    "build-client": "babel src/client --copy-files --out-dir ./dist/public",
+    "start": "node ./dist/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Jacky Efendi",
@@ -21,7 +25,10 @@
   },
   "homepage": "https://github.com/jackyef/react-boilerplate#readme",
   "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
     "dotenv": "^6.0.0",
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "jest": "^23.1.0"
   }
 }

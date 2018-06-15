@@ -8,6 +8,7 @@ npm start
 
 ## Goals
 - [ ] Babel
+- [ ] Jest
 - [ ] Hot reload
 - [ ] Redux
 - [ ] React router + code splitting
