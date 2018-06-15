@@ -8,10 +8,11 @@ npm start
 
 ## Goals
 - [ ] Babel
-- [ ] Jest
+- [x] Jest
+- [x] Enzyme
 - [ ] Hot reload
 - [ ] Redux
 - [ ] React router + code splitting
 - [ ] SSR-ready
-- [ ] React-emotion
+- [x] React-emotion
  
