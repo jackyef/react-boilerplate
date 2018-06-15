@@ -1,5 +1,6 @@
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const sharedModule = {
   rules: [
@@ -21,6 +22,9 @@ const client = {
     path: path.resolve(__dirname, 'dist/public'),
   },
   module: sharedModule,
+  plugins: [
+    new HtmlWebpackPlugin({ template: 'src/client/index.html' })
+  ],
 };
 
 const server = {
