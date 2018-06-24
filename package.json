@@ -4,13 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --config ./webpack/bundle.config.js",
     "build-babel": "yarn build-babel-server && yarn build-babel-client",
     "build-babel-server": "babel src/server --ignore __tests__ --out-dir ./dist",
     "build-babel-client": "babel src/client --copy-files --out-dir ./dist/public",
     "start": "node ./dist/server.js",
     "test": "jest ./src",
-    "clean": "rm -rf ./dist && rm -rf ./node_modules"
+    "clean": "rm -rf ./dist && rm -rf ./node_modules",
+    "dev": "webpack-serve --config ./webpack/serve.config.js",
+    "build:server": "webpack --config ./webpack/server.config.js"
   },
   "author": "Jacky Efendi",
   "license": "ISC",
@@ -34,7 +36,8 @@
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-emotion": "^9.2.3",
-    "webpack": "^4.12.0"
+    "webpack": "^4.12.0",
+    "webpack-serve": "^1.0.4"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

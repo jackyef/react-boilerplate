@@ -1,3 +1,4 @@
+require('dotenv').config();
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -25,6 +26,11 @@ const client = {
   plugins: [
     new HtmlWebpackPlugin({ template: 'src/client/index.html' })
   ],
+  mode: process.env.ENVIRONMENT === 'development' ? 'development' : 'production',
+  serve: {
+    host: 'localhost',
+    port: process.env.PORT,
+  },
 };
 
 const server = {
@@ -38,6 +44,7 @@ const server = {
   },
   module: sharedModule,
   externals: [ nodeExternals() ],
+  mode: process.env.ENVIRONMENT === 'development' ? 'development' : 'production',
 };
 
 module.exports = [client, server];
