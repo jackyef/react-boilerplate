@@ -7,12 +7,14 @@ npm run build
 npm start
 
 ## Goals
-- [ ] Babel
 - [x] Jest
 - [x] Enzyme
+- [x] ~webpack-dev-server~ webpack-serve
+- [x] eslint rules and prettier rules
 - [ ] Hot reload
 - [ ] Redux
-- [ ] React router + code splitting
+- [ ] React router 
+- [ ] code splitting by route
 - [ ] SSR-ready
 - [x] React-emotion
  

@@ -4,4 +4,6 @@ module.exports = {
   semi: true,
   eslintIntegration: true,
   tabWidth: 2, 
+  bracketSpacing: true,
+  printWidth: 120,
 }
