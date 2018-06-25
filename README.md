@@ -13,9 +13,10 @@ npm start
 - [x] ~webpack-dev-server~ webpack-serve
 - [x] eslint rules and prettier rules
 - [x] Hot reload client (webpack-serve + react-hot-loader)
-- [ ] Redux
-- [ ] React router 
-- [ ] code splitting by route
+- [x] Redux
+- [x] React router (v4)
+- [x] Connected react router to redux (via connected-react-router)
+- [ ] component based code splitting
 - [ ] SSR-ready
 - [ ] Hot reload server
  
