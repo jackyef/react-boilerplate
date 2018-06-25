@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { hot } from 'react-hot-loader';
+
 import Home from './routes/Home/View';
 
 class App extends Component {
@@ -12,4 +14,4 @@ class App extends Component {
   }
 }
 
-export default App;
+export default hot(module)(App);

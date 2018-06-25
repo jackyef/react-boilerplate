@@ -13,6 +13,11 @@ webpackClientConfig.serve = {
       poll: 1000,
     },
   },
+  hot: {
+    host: process.env.HOST || 'localhost',
+    port: process.env.PORT + 1,
+    hmr: true,
+  },
   host: process.env.HOST || 'localhost',
   port: process.env.PORT,
 };

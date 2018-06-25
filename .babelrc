@@ -5,7 +5,7 @@
     },
     "development": {
       "plugins": [
-        ["emotion", { "sourceMap": true, "autoLabel": true }]
+        ["emotion", "react-hot-loader/babel", { "sourceMap": true, "autoLabel": true }]
       ]
     }
   },

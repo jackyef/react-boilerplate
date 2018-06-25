@@ -9,12 +9,13 @@ npm start
 ## Goals
 - [x] Jest
 - [x] Enzyme
+- [x] React-emotion
 - [x] ~webpack-dev-server~ webpack-serve
 - [x] eslint rules and prettier rules
-- [ ] Hot reload
+- [x] Hot reload client (webpack-serve + react-hot-loader)
 - [ ] Redux
 - [ ] React router 
 - [ ] code splitting by route
 - [ ] SSR-ready
-- [x] React-emotion
+- [ ] Hot reload server
  
