@@ -1,6 +1,7 @@
 // This is the entry point for server build
-require('dotenv').config();
 import WebServer from './web.server';
+
+require('dotenv').config();
 
 const webServer = new WebServer();
 

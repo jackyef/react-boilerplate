@@ -1,5 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './app';
+import { createBrowserHistory } from 'history';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import App from './app';
+import createReduxStore from './redux';
+
+const history = createBrowserHistory();
+const store = createReduxStore(history);
+
+ReactDOM.render(<App history={history} store={store} />, document.getElementById('root'));

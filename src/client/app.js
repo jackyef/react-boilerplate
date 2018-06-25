@@ -1,17 +1,20 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { object } from 'prop-types';
 import { hot } from 'react-hot-loader';
+import { Provider } from 'react-redux';
+import RouterProvider from './routes';
 
-import Home from './routes/Home/View';
+const App = ({ history, store }) => {
+  return (
+    <Provider store={store}>
+      <RouterProvider history={history} />
+    </Provider>
+  );
+};
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        This is app.js
-        <Home />
-      </div>
-    )
-  }
-}
+App.propTypes = {
+  history: object.isRequired,
+  store: object.isRequired,
+};
 
 export default hot(module)(App);
