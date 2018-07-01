@@ -6,3 +6,6 @@ dist/
 
 # env
 .env
+
+# error logs
+yarn-error.log
