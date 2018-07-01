@@ -6,7 +6,7 @@ It includes some dummy components to help you get started and understand the boi
 Currently the bundles size are as follow:
 - vendors.js (94.95 KB gzipped)
 - client.js (2.59 KB gzipped)
-- other chunks from code splitting (<1 KB gzziped) (this will increase as your components get more complex)
+- other chunks from code splitting (<1 KB gzipped) (this will increase as your components get more complex)
 
 ## What it includes
 - [x] Jest
