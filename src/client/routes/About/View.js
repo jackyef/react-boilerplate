@@ -6,8 +6,12 @@ class About extends Component {
   render() {
     return (
       <AboutContainer>
-        This is About.js
-        <Link to={'/'}>Go to home</Link>
+        <div>
+          This is About.js 
+          <div>  
+            <Link to={'/'}>Go to home</Link>
+          </div>
+        </div>
       </AboutContainer>
     )
   }
