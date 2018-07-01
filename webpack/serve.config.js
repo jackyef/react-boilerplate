@@ -18,7 +18,6 @@ webpackClientConfig.serve = {
       poll: 1000,
     },
   },
-  content: path.join(__dirname, '/'),
   hot: {
     host: process.env.WEBPACK_HOST || 'localhost',
     port: Number(process.env.WEBPACK_PORT) + 1,

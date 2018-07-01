@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { AboutContainer } from './styles';
+import { LoaderFullscreen } from '../../components/Loader';
 
 class About extends Component {
   render() {
@@ -12,6 +13,7 @@ class About extends Component {
             <Link to={'/'}>Go to home</Link>
           </div>
         </div>
+        <LoaderFullscreen />
       </AboutContainer>
     )
   }

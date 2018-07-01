@@ -16,7 +16,7 @@ npm start
 - [x] Redux
 - [x] React router (v4)
 - [x] Connected react router to redux (via connected-react-router)
-- [ ] component based code splitting
+- [x] component based code splitting (via react-loadable)
 - [ ] SSR-ready
 - [ ] Hot reload server
  

@@ -3,15 +3,15 @@ import { object } from 'prop-types';
 import { Route, Switch } from 'react-router';
 import { ConnectedRouter } from 'connected-react-router';
 
-import HomeView from './Home/View';
-import AboutView from './About/View';
+import { getAboutView } from './About';
+import { getHomeView } from './Home';
 
 const RouterProvider = ({ history }) => {
   return (
     <ConnectedRouter history={history}>
       <Switch>
-        <Route exact path="/" component={HomeView} />
-        <Route path="/about" component={AboutView} />
+        <Route exact path="/" component={getHomeView} />
+        <Route path="/about" component={getAboutView} />
       </Switch>
     </ConnectedRouter>
   );
