@@ -1,9 +1,12 @@
-require('dotenv').config();
 import express from 'express';
+import compression from 'compression';
+
+require('dotenv').config();
 
 export default class WebServer {
   constructor() {
     this.app = express();
+    this.app.use(compression());
     this.app.use(express.static('dist/public'));
   }
 

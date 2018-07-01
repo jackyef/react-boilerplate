@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --config ./webpack/bundle.config.js",
+    "build:dev": "NODE_ENV=development webpack --config ./webpack/bundle.config.js",
+    "build:prod": "NODE_ENV=production webpack --config ./webpack/bundle.config.js",
     "build-babel": "yarn build-babel-server && yarn build-babel-client",
     "build-babel-server": "babel src/server --ignore __tests__ --out-dir ./dist",
     "build-babel-client": "babel src/client --copy-files --out-dir ./dist/public",
@@ -12,7 +14,8 @@
     "test": "jest ./src",
     "clean": "rm -rf ./dist && rm -rf ./node_modules",
     "dev": "webpack-serve --config ./webpack/serve.config.js",
-    "build:server": "webpack --config ./webpack/server.config.js"
+    "build:server": "webpack --config ./webpack/server.config.js",
+    "stats": "NODE_ENV=production webpack --config ./webpack/bundle.config.js --profile --json > stats.json && webpack-bundle-analyzer stats.json dist/public"
   },
   "author": "Jacky Efendi",
   "license": "ISC",
@@ -22,7 +25,11 @@
   },
   "keywords": [
     "Node",
-    "React"
+    "React",
+    "Emotion",
+    "Styled components",
+    "Codesplitting",
+    "Boilerplate"
   ],
   "bugs": {
     "url": "https://github.com/jackyef/react-boilerplate/issues"
@@ -31,7 +38,9 @@
   "dependencies": {
     "babel-plugin-emotion": "^9.2.0",
     "babel-plugin-syntax-dynamic-import": "^6.18.0",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-stage-0": "^6.24.1",
+    "compression": "^1.7.2",
     "connect-history-api-fallback": "^1.5.0",
     "connected-react-router": "^4.3.0",
     "dotenv": "^6.0.0",
@@ -48,8 +57,8 @@
     "react-redux": "^5.0.7",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
-    "react-router-redux": "^4.0.8",
     "redux": "^4.0.0",
+    "uglifyjs-webpack-plugin": "^1.2.7",
     "webpack": "^4.12.0",
     "webpack-serve": "^1.0.4"
   },
@@ -59,6 +68,7 @@
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "compression-webpack-plugin": "^1.1.11",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^5.0.0",
@@ -69,6 +79,7 @@
     "jest": "^23.1.0",
     "raf": "^3.4.0",
     "react-test-renderer": "^16.4.1",
+    "webpack-bundle-analyzer": "^2.13.1",
     "webpack-cli": "^3.0.6",
     "webpack-node-externals": "^1.7.2"
   },

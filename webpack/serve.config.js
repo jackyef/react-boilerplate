@@ -1,5 +1,4 @@
 require('dotenv').config();
-const path = require('path');
 const history = require('connect-history-api-fallback');
 const convert = require('koa-connect');
 
