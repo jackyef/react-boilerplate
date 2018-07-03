@@ -28,7 +28,29 @@ module.exports = {
     filename: '[name].js', // will use the key value in entry as the name, in this case, it's 'client'
     path: path.resolve(__dirname, '../dist/public'),
   },
-  module: sharedModule,
+  module: {
+    ...sharedModule,
+    rules: [
+      ...sharedModule.rules,
+      {
+        test: /\.(png|jpe?g|gif|svg)$/, 
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name (_file) {
+                if (process.env.NODE_ENV === 'development') {
+                  return '[path][name].[ext]';
+                } else {
+                  return '[hash].[ext]';
+                }
+              }
+            },
+          }
+        ]
+      },
+    ],
+  },
   plugins: [
     new UglifyJSPlugin(),
     new CompressionPlugin(),
@@ -62,8 +84,4 @@ module.exports = {
     },
   },
   mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
-  serve: {
-    host: 'localhost',
-    port: process.env.PORT,
-  },
 };

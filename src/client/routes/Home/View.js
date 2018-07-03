@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+
+import homeImage from './assets/home-icon.svg';
+
 import { HomeContainer } from './styles';
 
 class Home extends Component {
@@ -8,6 +11,7 @@ class Home extends Component {
       <HomeContainer>
         <div>
           This is Home.js
+          <img src={homeImage} />
           <div>
             <Link to={'/about'}>Go to about</Link>
           </div>
