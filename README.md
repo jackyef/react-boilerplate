@@ -27,6 +27,8 @@ Currently the bundles size are as follow:
   > Load js for components only when they are needed, reduce main bundle size
 - [x] Some webpack bundle optimizations 
 
+Other stuffs: 
+- File loader
 
 ## What's next
 - [ ] SSR capability
