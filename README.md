@@ -31,8 +31,8 @@ Other stuffs:
 - File loader
 
 ## What's next
-- [ ] SSR capability
-- [ ] Hot reload server
+- [ ] SSR capability (renderer service)
+- [ ] Containerize using docker for easy installation
 
 ## Commands
 | Commands        | Purpose                                                   |
