@@ -3,7 +3,6 @@ import nodeExternals from 'webpack-node-externals';
 import webpack from 'webpack';
 import appRootDir from 'app-root-dir';
 
-import sharedModule from './shared.config.babel';
 import { ifDev, isDev, service, serverEnv } from './utils';
 
 const developmentPlugins = () => {
@@ -42,13 +41,42 @@ module.exports = {
   },
 
   watch: isDev, // for HMR
+  mode: ifDev('development', 'production'),
 
   output: {
     filename: '[name].js',
     path: path.resolve(appRootDir.get(), `./build/${service}`),
+    libraryTarget: 'commonjs2',
   },
 
-  module: sharedModule,
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: {
+          cacheDirectory: isDev,
+          babelrc: false,
+          presets: [
+            [
+              'env',
+              {
+                targets: {
+                  node: 'current',
+                },
+                modules: false,
+                useBuiltIns: true,
+              },
+            ],
+            'stage-0',
+            'react',
+          ],
+          plugins: ['react-loadable/babel'],
+        },
+      },
+    ],
+  },
   devtool: ifDev('cheap-module-source-map', '(none)'),
   externals: [
     nodeExternals({
@@ -59,7 +87,7 @@ module.exports = {
       ],
     }),
   ],
-  mode: ifDev('development', 'production'),
+
   plugins: [
     ...developmentPlugins(),
     /**

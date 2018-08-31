@@ -1,7 +1,6 @@
 import Koa from 'koa';
-// import logger from 'koa-pino-logger';
+import Loadable from 'react-loadable';
 import config from 'config';
-import logRandomNumber from './middlewares/logRandomNumber';
 
 const log = require('debug')('renderer');
 
@@ -11,18 +10,16 @@ const { host, port } = config.get('renderer');
 
 let app = new Koa();
 
-// app.use(logger());
-
 app.use(ctx => {
-  log(ctx.request);
-  ctx.body = 'hello world aasdassdasasdasd';
+  log(JSON.stringify(ctx.request));
+  ctx.body = 'hello world asaasdasdsdqwe';
 });
 
-// app.use(logRandomNumber);
-
-if (__PROD__) {
-  app.listen(port);
-  log(`Renderer service is up and running at ${host}:${port}`);
-}
+Loadable.preloadAll().then(() => {
+  if (__PROD__) {
+    app.listen(port);
+    log(`Renderer service is up and running at ${host}:${port}`);
+  }
+});
 
 export default app;
