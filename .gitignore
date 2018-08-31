@@ -3,6 +3,7 @@ node_modules/
 
 # Project build
 dist/
+build/
 
 # env
 .env

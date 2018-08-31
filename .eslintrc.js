@@ -100,5 +100,7 @@ module.exports = {
   globals: {
     // put global variables here so eslint knows about them
     // myGlobalConst: true,
+    __DEV__: true,
+    __PROD__: true,
   },
 };

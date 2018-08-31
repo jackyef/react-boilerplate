@@ -5,7 +5,7 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
-const sharedModule = require('./shared.config');
+const sharedModule = require('./shared.config.babel');
 
 module.exports = {
   entry: {

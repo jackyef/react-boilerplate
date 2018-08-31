@@ -2,7 +2,7 @@ require('dotenv').config();
 const history = require('connect-history-api-fallback');
 const convert = require('koa-connect');
 
-const webpackClientConfig = require('./client.config');
+const webpackClientConfig = require('./client.config.babel');
 
 webpackClientConfig.serve = {
   dev: {
