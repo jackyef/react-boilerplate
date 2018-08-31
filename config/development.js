@@ -9,8 +9,8 @@ const config = {
   },
   renderer: {
     host: 'localhost',
-    port: 50001,
-    hmrPort: 50002,
+    port: 5001,
+    hmrPort: 5002,
   }
 };
 
