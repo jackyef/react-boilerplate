@@ -21,6 +21,8 @@ export const ifProd = (then, orElse) => {
 export const isDev = process.env.NODE_ENV === 'development';
 export const isProd = process.env.NODE_ENV === 'production';
 export const service = process.env.SERVICE_NAME;
+export const entryFile = `./src/${service}/${ifDev('index.js', 'server.js')}`;
+export const buildPath = `./build/${service}`;
 
 export const serverEnv = {
   globals: JSON.stringify({

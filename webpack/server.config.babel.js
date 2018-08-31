@@ -2,8 +2,11 @@ import path from 'path';
 import nodeExternals from 'webpack-node-externals';
 import webpack from 'webpack';
 import appRootDir from 'app-root-dir';
+import fs from 'fs-extra';
 
-import { ifDev, isDev, service, serverEnv } from './utils';
+import { ifDev, isDev, service, serverEnv, entryFile, buildPath } from './utils';
+
+const debug = require('debug')('build:renderer');
 
 const developmentPlugins = () => {
   if (process.env.ENVIRONMENT === 'development') {
@@ -17,6 +20,15 @@ const developmentPlugins = () => {
   
   return [];
 }
+
+debug(`=> Purging folder '${buildPath}' ...`);
+fs.emptyDirSync(buildPath);
+
+if (!service) {
+  throw new Error('SERVICE_NAME is undefined');
+}
+
+debug(`=> Building service: '${service}', entry: '${entryFile}', output: '${buildPath}/server.js'`);
 
 module.exports = {
   target: 'node', //tells webpack that this build will be run in node env
@@ -36,7 +48,7 @@ module.exports = {
   entry: {
     server: [
       ...ifDev(['webpack/hot/poll?1000'], []),
-      path.resolve(appRootDir.get(), `./src/${service}/${ifDev('index', 'server')}.js`),
+      path.resolve(appRootDir.get(), entryFile),
     ],
   },
 
@@ -45,7 +57,7 @@ module.exports = {
 
   output: {
     filename: '[name].js',
-    path: path.resolve(appRootDir.get(), `./build/${service}`),
+    path: path.resolve(appRootDir.get(), buildPath),
     libraryTarget: 'commonjs2',
   },
 

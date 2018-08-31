@@ -13,7 +13,6 @@
     "start": "node ./dist/server.js",
     "test": "jest ./src",
     "clean": "rm -rf ./dist && rm -rf ./node_modules",
-    "clean:build": "rm -rf ./dist && rm -rf ./build",
     "dev": "NODE_ENV=development webpack-serve --config ./webpack/serve.config.babel.js",
     "dev:server": "bnr dev:server",
     "build:server": "webpack --config ./webpack/server.config.babel.js",
@@ -21,7 +20,7 @@
   },
   "betterScripts": {
     "dev:server": {
-      "command": "yarn clean:build && webpack --config ./webpack/server.config.babel.js",
+      "command": "webpack --config ./webpack/server.config.babel.js",
       "env": {
         "NODE_ENV": "development",
         "SERVICE_NAME": "renderer",
@@ -62,6 +61,7 @@
     "dotenv": "^6.0.0",
     "emotion": "^9.2.3",
     "express": "^4.16.3",
+    "fs-extra": "^7.0.0",
     "history": "^4.7.2",
     "koa": "^2.5.2",
     "koa-connect": "^2.0.1",
