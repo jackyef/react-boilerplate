@@ -3,7 +3,6 @@ import nodeExternals from 'webpack-node-externals';
 import webpack from 'webpack';
 import appRootDir from 'app-root-dir';
 
-import sharedModule from './shared.config.babel';
 import { ifDev, isDev, service, serverEnv } from './utils';
 
 const developmentPlugins = () => {
@@ -11,13 +10,13 @@ const developmentPlugins = () => {
     const StartServerPlugin = require('start-server-webpack-plugin');
 
     return [
-      new StartServerPlugin('server.js'),
+      new StartServerPlugin('server.js'), 
       new webpack.HotModuleReplacementPlugin(),
     ];
   }
-  
+
   return [];
-}
+};
 
 module.exports = {
   target: 'node', //tells webpack that this build will be run in node env
@@ -43,23 +42,59 @@ module.exports = {
 
   watch: isDev, // for HMR
 
+  mode: ifDev('development', 'production'),
+
   output: {
     filename: '[name].js',
     path: path.resolve(appRootDir.get(), `./build/${service}`),
+    libraryTarget: 'commonjs2',
   },
 
-  module: sharedModule,
-  devtool: ifDev('cheap-module-source-map', '(none)'),
+  devtool: ifDev('source-map', '(none)'),
+
+  module: {
+    // Makes missing export becomes compile error
+    strictExportPresence: true,
+    noParse: /lodash/,
+    rules: [
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader',
+        options: {
+          cacheDirectory: isDev,
+          babelrc: false,
+          presets: [
+            [
+              'env',
+              {
+                targets: {
+                  node: 'current',
+                },
+                modules: false,
+                useBuiltIns: true,
+              },
+            ],
+            'stage-0',
+            'react',
+          ],
+          plugins: ['react-loadable/babel'],
+        },
+      },
+    ],
+  },
+
   externals: [
     nodeExternals({
       whitelist: [
-        ...ifDev(['webpack/hot/poll?1000'], ['source-map-support/register']),
+        ...ifDev(['webpack/hot/poll?1000'], []),
+        'source-map-support/register',
         /\.(svg|png|jpg|jpeg|gif|ico)$/,
         /\.(css|scss|sass|sss|less)$/,
       ],
     }),
   ],
-  mode: ifDev('development', 'production'),
+
   plugins: [
     ...developmentPlugins(),
     /**
