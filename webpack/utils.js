@@ -22,6 +22,7 @@ export const isDev = process.env.NODE_ENV === 'development';
 export const isProd = process.env.NODE_ENV === 'production';
 export const service = process.env.SERVICE_NAME;
 export const entryFile = `./src/${service}/${ifDev('index.js', 'server.js')}`;
+export const entryClient = './src/client/index.js';
 export const buildPath = `./build/${service}`;
 
 export const serverEnv = {
@@ -32,4 +33,14 @@ export const serverEnv = {
   __PROD__: isProd,
   __CLIENT__: false,
   __SERVER__: true,
+}
+
+export const clientEnv = {
+  globals: JSON.stringify({
+    ...config.globals,
+  }),
+  __DEV__: isDev,
+  __PROD__: isProd,
+  __CLIENT__: true,
+  __SERVER__: false,
 }

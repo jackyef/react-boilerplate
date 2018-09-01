@@ -13,8 +13,9 @@
     "start": "node ./dist/server.js",
     "test": "jest ./src",
     "clean": "rm -rf ./dist && rm -rf ./node_modules",
-    "dev": "NODE_ENV=development webpack-serve --config ./webpack/serve.config.babel.js",
+    "dev:client": "bnr dev:client",
     "dev:server": "bnr dev:server",
+    "build:client:prod": "bnr build:client:prod",
     "build:server": "webpack --config ./webpack/server.config.babel.js",
     "stats": "NODE_ENV=production webpack --config ./webpack/bundle.config.babel.js --profile --json > stats.json && webpack-bundle-analyzer stats.json dist/public"
   },
@@ -25,6 +26,22 @@
         "NODE_ENV": "development",
         "SERVICE_NAME": "renderer",
         "DEBUG": "*renderer*, *koa*"
+      }
+    },
+    "dev:client": {
+      "command": "webpack-serve --config ./webpack/serve.config.babel.js",
+      "env": {
+        "NODE_ENV": "development",
+        "SERVICE_NAME": "client",
+        "DEBUG": "*client*"
+      }
+    },
+    "build:client:prod": {
+      "command": "webpack --config ./webpack/client.config.babel.js",
+      "env": {
+        "NODE_ENV": "production",
+        "SERVICE_NAME": "client",
+        "DEBUG": "*client*"
       }
     }
   },

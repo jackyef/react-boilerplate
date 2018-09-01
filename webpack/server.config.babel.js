@@ -6,10 +6,10 @@ import fs from 'fs-extra';
 
 import { ifDev, isDev, service, serverEnv, entryFile, buildPath } from './utils';
 
-const debug = require('debug')('build:renderer');
+const debug = require('debug')(`build:${service}`);
 
 const developmentPlugins = () => {
-  if (process.env.ENVIRONMENT === 'development') {
+  if (isDev) {
     const StartServerPlugin = require('start-server-webpack-plugin');
 
     return [
