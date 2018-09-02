@@ -1,3 +1,4 @@
+require('@babel/register');
 require('dotenv').config();
 const history = require('connect-history-api-fallback');
 const convert = require('koa-connect');
