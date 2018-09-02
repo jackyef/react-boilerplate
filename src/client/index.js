@@ -8,4 +8,4 @@ import createReduxStore from './redux';
 const history = createBrowserHistory();
 const store = createReduxStore(history);
 
-ReactDOM.render(<App history={history} store={store} />, document.getElementById('root'));
+ReactDOM.hydrate(<App history={history} store={store} />, document.getElementById('root'));

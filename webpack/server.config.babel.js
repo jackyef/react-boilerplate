@@ -4,7 +4,7 @@ import webpack from 'webpack';
 import appRootDir from 'app-root-dir';
 import fs from 'fs-extra';
 
-import { ifDev, isDev, service, serverEnv, entryFile, buildPath } from './utils';
+import { ifDev, isDev, isProd, service, serverEnv, entryFile, buildPath } from './utils';
 
 const debug = require('debug')(`build:${service}`);
 
@@ -47,6 +47,7 @@ module.exports = {
 
   entry: {
     server: [
+      'babel-polyfill',
       ...ifDev(['webpack/hot/poll?1000'], []),
       path.resolve(appRootDir.get(), entryFile),
     ],
@@ -84,8 +85,24 @@ module.exports = {
             'stage-0',
             'react',
           ],
-          plugins: ['react-loadable/babel'],
+          plugins: [
+            'react-loadable/babel', 
+            ['emotion', { autoLabel: isDev, hoist: isProd, sourceMap: isDev }]
+          ],
         },
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/, 
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name (_file) {
+                return ifDev('[path][name].[ext]', '[hash].[ext]');
+              }
+            },
+          }
+        ]
       },
     ],
   },

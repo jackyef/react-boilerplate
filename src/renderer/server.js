@@ -2,7 +2,7 @@ import Koa from 'koa';
 import Loadable from 'react-loadable';
 import config from 'config';
 
-import { rendererMiddleware, logRandomNumberMiddleware } from './middlewares';
+import { rendererMiddleware } from './middlewares';
 
 const log = require('debug')('renderer');
 
@@ -14,15 +14,10 @@ let app = new Koa();
 
 app.use(async (ctx, next) => {
   log(JSON.stringify(ctx.request));
-  log(JSON.stringify(ctx));
-  ctx.body = 'hello world asaasdasdsdqwe';
 
   await next();
-
-  ctx.body += 'this should be at end of body';
 });
 
-app.use(logRandomNumberMiddleware);
 app.use(rendererMiddleware);
 
 Loadable.preloadAll().then(() => {

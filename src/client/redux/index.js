@@ -1,19 +1,18 @@
 import { createStore, compose, applyMiddleware } from 'redux';
-import { connectRouter, routerMiddleware } from 'connected-react-router';
 
 import reducers from './reducers';
 import initialState from './initialState';
 
-export default history => {
-  const middleware = routerMiddleware(history);
+export default () => {
+  // const middleware = routerMiddleware(history); // no longed need to connect to redux
 
   const store = createStore(
-    connectRouter(history)(reducers),
+    reducers,
     initialState, // can hydrate initialState from server here, for SSR purposes.
-    compose(
-      applyMiddleware(middleware), // for allowing change location by store.dispatch
+    // compose(
+      // applyMiddleware(middleware), // for allowing change location by store.dispatch
       // add other middleware here, if needed
-    )
+    // )
   );
 
   return store;

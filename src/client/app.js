@@ -2,12 +2,16 @@ import React from 'react';
 import { object } from 'prop-types';
 import { hot } from 'react-hot-loader';
 import { Provider } from 'react-redux';
-import RouterProvider from './routes';
+import { Router } from 'react-router-dom';
+
+import Routes from './routes';
 
 const App = ({ history, store }) => {
   return (
     <Provider store={store}>
-      <RouterProvider history={history} />
+      <Router history={history}>
+        <Routes />
+      </Router>
     </Provider>
   );
 };
