@@ -4,6 +4,7 @@ import appRootDir from 'app-root-dir';
 import UglifyJSPlugin from 'uglifyjs-webpack-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
+import AssetsPlugin from 'assets-webpack-plugin';
 import fs from 'fs-extra';
 
 import { ifDev, isProd, service, clientEnv, entryClient, buildPath } from './utils';
@@ -66,6 +67,10 @@ module.exports = {
     new HtmlWebpackPlugin({ template: 'src/client/index.html' }),
     new webpack.HashedModuleIdsPlugin(),
     new webpack.DefinePlugin(clientEnv),
+    new AssetsPlugin({
+      filename: 'assets.json',
+      path: path.resolve(appRootDir.get(), './build/client'),
+    })
   ],
   optimization: {
     nodeEnv: ifDev('development', 'production'),

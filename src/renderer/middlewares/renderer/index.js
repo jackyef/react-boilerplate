@@ -1,5 +1,6 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
+import { renderStylesToString } from 'emotion-server';
 import { StaticRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
@@ -9,13 +10,14 @@ import { header, footer } from './templates';
 
 const renderer = async (ctx, next)  => {
   const store = createReduxStore();
-  const app = renderToString(
+  const routerContext = {};
+  const app = renderStylesToString(renderToString(
     <Provider store={store}>
-      <StaticRouter url={ctx.url} context={{}}>
+      <StaticRouter url={ctx.url} context={routerContext}>
         <Routes />
       </StaticRouter>
     </Provider>
-  );
+  ));
 
   ctx.body = `${header}${app}${footer}`;
 
