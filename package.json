@@ -15,7 +15,7 @@
     "clean": "rm -rf ./dist && rm -rf ./node_modules",
     "dev": "NODE_ENV=development webpack-serve --config ./webpack/serve.config.js",
     "build:server": "webpack --config ./webpack/server.config.js",
-    "stats": "NODE_ENV=production webpack --config ./webpack/bundle.config.js --profile --json > stats.json && webpack-bundle-analyzer stats.json dist/public"
+    "stats": "NODE_ENV=production webpack --config ./webpack/analyze.config.js --display-error-details"
   },
   "author": "Jacky Efendi",
   "license": "ISC",
@@ -46,6 +46,7 @@
     "dotenv": "^6.0.0",
     "emotion": "^9.2.3",
     "express": "^4.16.3",
+    "fs-extra": "^7.0.0",
     "history": "^4.7.2",
     "koa-connect": "^2.0.1",
     "prop-types": "^15.6.2",
@@ -58,7 +59,8 @@
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",
-    "uglifyjs-webpack-plugin": "^1.2.7",
+    "terser-webpack-plugin": "^1.1.0",
+    "uglifyjs-webpack-plugin": "^2.0.1",
     "webpack": "^4.12.0",
     "webpack-serve": "^1.0.4"
   },

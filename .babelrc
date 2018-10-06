@@ -5,12 +5,7 @@
     },
     "development": {
       "plugins": [
-        [
-          "emotion", 
-          "syntax-dynamic-import",
-          "react-hot-loader/babel", 
-          { "sourceMap": true, "autoLabel": true }
-        ]
+        ["emotion", "syntax-dynamic-import", "react-hot-loader/babel", { "sourceMap": true, "autoLabel": true }]
       ]
     }
   },
