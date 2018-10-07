@@ -17,29 +17,3 @@ const main = lang => {
 };
 
 main('id');
-
-// const main = () => {
-  // console.log('lang', i18n[lang].errorMessageProduct);
-  
-//   otherChunk().then(res => {
-//     console.log('otherChunk', res);
-//   })
-//   otherChunk2().then(res => {
-//     console.log('otherChunk2', res);
-//   })
-//   otherChunk3().then(res => {
-//     console.log('otherChunk3', res);
-//   })
-//   otherChunk4().then(res => {
-//     console.log('otherChunk4', res);
-//   })
-//   otherChunk5().then(res => {
-//     console.log('otherChunk5', res);
-//   })
-//   otherChunk6().then(res => {
-//     console.log('otherChunk6', res);
-//   })
-// }
-
-
-// main();
