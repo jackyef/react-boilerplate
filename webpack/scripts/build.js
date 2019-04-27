@@ -4,7 +4,9 @@
 import webpack from 'webpack';
 import appRootDir from 'app-root-dir';
 import path from 'path';
+import fs from 'fs-extra';
 
+const log = require('debug')('build:process');
 const logError = require('debug')('build:error');
 const logSuccessError = require('debug')('build:success:error');
 const logSuccessWarning = require('debug')('build:success:warning');
@@ -21,6 +23,10 @@ async function build() {
   }
 
   const config = require(path.join(appRootDir.get(), `/webpack/${dir}.config`)).default;
+
+  // Make sure build path is exist, if not create it
+  log(`> Cleaning output folder ${config.output.path} ...`);
+  fs.emptyDirSync(config.output.path);
 
   return new Promise((resolve, reject) => {
     webpack(config).run((err, stats) => {

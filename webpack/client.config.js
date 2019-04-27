@@ -1,22 +1,22 @@
 require('@babel/register');
 require('dotenv').config();
-const path = require('path');
-const webpack = require('webpack');
-// const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CompressionPlugin = require('compression-webpack-plugin');
 
-const sharedModule = require('./shared.config').module;
-const sharedPlugins = require('./shared.config').plugins;
+import path from 'path';
+import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import CompressionPlugin from 'compression-webpack-plugin';
+
+import { ifDev, isProd } from './build-utils';
+import { module as sharedModule, plugins as sharedPlugins } from './shared.config';
 
 export default {
   entry: {
     client: ['./src/client/index.js'],
   },
-  target: 'web', //tells webpack that this build will be run in browsers
+  target: 'web', // tells webpack that this build will be run in browsers
   output: {
-    filename: '[name].js', // will use the key value in entry as the name, in this case, it's 'client'
-    path: path.resolve(__dirname, '../dist/public'),
+    filename: ifDev('[name].js','[name].[hash].js'),
+    path: path.resolve(__dirname, '../dist/client'),
   },
   module: {
     ...sharedModule,
@@ -42,15 +42,14 @@ export default {
     ],
   },
   plugins: [
-    // new UglifyJSPlugin(),
     ...sharedPlugins,
     new CompressionPlugin(),
     new HtmlWebpackPlugin({ template: 'src/client/index.html' }),
     new webpack.HashedModuleIdsPlugin(),
   ],
   optimization: {
-    nodeEnv: process.env.NODE_ENV === 'development' ? 'development' : 'production',
-    minimize: process.env.NODE_ENV === 'production',
+    nodeEnv: ifDev('development', 'production'),
+    minimize: isProd,
     splitChunks: {
       chunks: 'async',
       minSize: 30000,
@@ -75,4 +74,10 @@ export default {
     },
   },
   mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
+
+  /**
+   * Controls how source maps are generated
+   * (https://webpack.js.org/configuration/devtool/)
+   */
+  devtool: ifDev('cheap-module-eval-source-map', '(none)'),
 };

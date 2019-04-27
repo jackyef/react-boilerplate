@@ -27,7 +27,7 @@ Currently the bundles size are as follow:
 
 ## What's next
 - [x] Use koa instead of express
-- [ ] Enable source map
+- [x] Enable source map for dev
 - [ ] Setup import resolvers
 - [ ] Change Enzyme to react-testing-library
 - [x] Remove redux, replace it with a GlobalContext with hooks!
@@ -37,14 +37,11 @@ Currently the bundles size are as follow:
 - [ ] Containerize using docker for easy installation
 
 ## Commands
-| Commands        | Purpose                                                   |
-|-----------------|-----------------------------------------------------------|
-| yarn            | install dependencies                                      |
-| yarn stats      | run webpack-bundle-analyzer                               |
-| yarn build:prod | to build optimized bundle                                 |
-| yarn start      | to start server                                           |
-| yarn dev        | run webpack-serve with hot reload enabled for development |
-
- 
-
- 
+| Commands            | Purpose                                                        |
+|---------------------|----------------------------------------------------------------|
+| yarn                | install dependencies                                           |
+| yarn stats          | run webpack-bundle-analyzer                                    |
+| yarn build:client   | to build optimized bundle                                      |
+| yarn build:server   | to build optimized server bundle                               |
+| yarn dev:server     | to start server                                                |
+| yarn dev:client     | run webpack-dev-server with hot reload enabled for development | 

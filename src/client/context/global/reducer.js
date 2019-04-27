@@ -1,5 +1,5 @@
 const cases = {
-  INCREMENT_COUNTER: state => console.log('called') || ({
+  INCREMENT_COUNTER: state => ({
     count: state.count + 1,
   }),
 };
