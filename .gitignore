@@ -10,3 +10,7 @@ build/
 
 # error logs
 yarn-error.log
+*.log
+
+# misc
+stats.json

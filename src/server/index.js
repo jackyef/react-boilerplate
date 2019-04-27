@@ -1,16 +1,22 @@
-// This is the entry point for server build
-import WebServer from './web.server';
+import Koa from 'koa';
+import compress from 'koa-compress';
+
+import rendererMiddleware from './middlewares/renderer';
 
 require('dotenv').config();
 
-const webServer = new WebServer();
+const { PORT } = process.env;
 
-webServer.start()
-  .then(() => {
-    console.log(`Web Server started and listening on port ${process.env.PORT}`);
+const app = new Koa();
+
+app.use(compress());
+
+app.use(rendererMiddleware);
+
+if (__PROD__) {
+  app.listen(PORT, () => {
+    console.log('Server is listening on port', PORT)
   })
-  .catch(err => {
-    console.error(err);
-    console.error('Failed to start web server');
-  })
-  
+}
+
+export default app;

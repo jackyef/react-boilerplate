@@ -1,27 +1,17 @@
+require('@babel/register');
 require('dotenv').config();
 const path = require('path');
 const webpack = require('webpack');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+// const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
-const sharedModule = require('./shared.config');
+const sharedModule = require('./shared.config').module;
+const sharedPlugins = require('./shared.config').plugins;
 
-module.exports = {
+export default {
   entry: {
     client: ['./src/client/index.js'],
-    vendors: [
-      'babel-polyfill',
-      'react',
-      'react-dom',
-      'redux',
-      'react-emotion',
-      'react-loadable',
-      'connected-react-router',
-      'react-redux',
-      'react-router',
-      'react-router-dom',
-    ],
   },
   target: 'web', //tells webpack that this build will be run in browsers
   output: {
@@ -52,7 +42,8 @@ module.exports = {
     ],
   },
   plugins: [
-    new UglifyJSPlugin(),
+    // new UglifyJSPlugin(),
+    ...sharedPlugins,
     new CompressionPlugin(),
     new HtmlWebpackPlugin({ template: 'src/client/index.html' }),
     new webpack.HashedModuleIdsPlugin(),

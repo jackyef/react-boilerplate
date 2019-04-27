@@ -31,6 +31,12 @@ Other stuffs:
 - File loader
 
 ## What's next
+- [x] Use koa instead of express
+- [ ] Setup import resolvers
+- [ ] Change Enzyme to react-testing-library
+- [ ] Remove redux
+- [x] Change webpack-serve to webpack-dev-server
+- [ ] Upgrade react-emotion version
 - [ ] SSR capability (renderer service)
 - [ ] Containerize using docker for easy installation
 

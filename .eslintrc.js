@@ -63,8 +63,8 @@ module.exports = {
     'import/default': 0,
     'import/export': 2,
     'import/newline-after-import': 2,
-    'import/prefer-default-export': 1,
-    'import/first': [2, 'absolute-first'],
+    'import/prefer-default-export': 0,
+    'import/first': 0,
     'react/forbid-prop-types': [1, { forbid: ['any', 'array'] }],
     'react/jsx-boolean-value': 2,
     'react/jsx-closing-bracket-location': 1,
@@ -99,6 +99,9 @@ module.exports = {
   },
   globals: {
     // put global variables here so eslint knows about them
-    // myGlobalConst: true,
+    __SERVER__: true,
+    __CLIENT__: true,
+    __PROD__: true,
+    __DEV__: true,
   },
 };

@@ -1,31 +1,31 @@
+require('@babel/register');
 require('dotenv').config();
-const history = require('connect-history-api-fallback');
-const convert = require('koa-connect');
 
-const webpackClientConfig = require('./client.config');
+const webpackClientConfig = require('./client.config').default;
 
-webpackClientConfig.serve = {
-  dev: {
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-    },
-    publicPath: `http://${process.env.WEBPACK_HOST}:${process.env.WEBPACK_PORT}`,
-    logLevel: 'silent',
-    watchOptions: {
-      aggregateTimeout: 300,
-      ignored: /node_modules/,
-      poll: 1000,
-    },
+const host = process.env.CLIENT_HOST;
+const port = process.env.CLIENT_PORT;
+
+webpackClientConfig.devServer = {
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+    'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization',
   },
-  hot: {
-    host: process.env.WEBPACK_HOST || 'localhost',
-    port: Number(process.env.WEBPACK_PORT) + 1,
-    hmr: true,
+  historyApiFallback: true,
+  host,
+  hot: true,
+  logLevel: 'silent',
+  port,
+  publicPath: webpackClientConfig.output.publicPath,
+  overlay: {
+    warnings: false,
+    errors: true,
   },
-  host: process.env.WEBPACK_HOST || 'localhost',
-  port: process.env.WEBPACK_PORT,
-  add: (app, _middleware, _options) => {
-    app.use(convert(history()));
+  watchOptions: {
+    aggregateTimeout: 300,
+    ignored: /node_modules/,
+    poll: 1000,
   },
 };
 
