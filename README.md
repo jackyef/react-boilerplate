@@ -20,7 +20,7 @@ Currently the bundles size are as follow:
 - [x] eslint rules and prettier rules
   > Highly opinionated rules (from work experiences and my personal preferences)
 - [x] React router (v4)
-  > One of the essentials, connected to redux via connected-react-router
+  > The defacto routing solution for react app
 - [x] component based code splitting 
   > Load js for components only when they are needed, reduce main bundle size
 - [x] Some webpack bundle optimizations 
@@ -43,5 +43,5 @@ Currently the bundles size are as follow:
 | yarn stats          | run webpack-bundle-analyzer                                    |
 | yarn build:client   | to build optimized bundle                                      |
 | yarn build:server   | to build optimized server bundle                               |
-| yarn dev:server     | to start server                                                |
+| yarn dev:server     | to start development server for the server renderer            |
 | yarn dev:client     | run webpack-dev-server with hot reload enabled for development | 
