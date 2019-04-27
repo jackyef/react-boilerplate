@@ -1,20 +1,19 @@
 import React from 'react';
 import { object } from 'prop-types';
-import { hot } from 'react-hot-loader';
-import { Provider } from 'react-redux';
+import { hot } from 'react-hot-loader/root';
 import RouterProvider from './routes';
+import ContextProvider from './context';
 
-const App = ({ history, store }) => {
+const App = ({ history }) => {
   return (
-    <Provider store={store}>
+    <ContextProvider>
       <RouterProvider history={history} />
-    </Provider>
+    </ContextProvider>
   );
 };
 
 App.propTypes = {
   history: object.isRequired,
-  store: object.isRequired,
 };
 
-export default hot(module)(App);
+export default hot(App);

@@ -15,28 +15,24 @@ Currently the bundles size are as follow:
   > Library to test react component
 - [x] React-emotion
   > Easy CSS in JS solution, no more worrying about DOM elements being loaded before CSS
-- [x] webpack-serve + react-hot-loader
+- [x] webpack-dev-server + react-hot-loader
   > Development server with hot reload capabilities
 - [x] eslint rules and prettier rules
   > Highly opinionated rules (from work experiences and my personal preferences)
-- [x] Redux
-  > Just in case the web-app would need one
 - [x] React router (v4)
   > One of the essentials, connected to redux via connected-react-router
 - [x] component based code splitting 
   > Load js for components only when they are needed, reduce main bundle size
 - [x] Some webpack bundle optimizations 
 
-Other stuffs: 
-- File loader
-
 ## What's next
 - [x] Use koa instead of express
+- [ ] Enable source map
 - [ ] Setup import resolvers
 - [ ] Change Enzyme to react-testing-library
-- [ ] Remove redux
+- [x] Remove redux, replace it with a GlobalContext with hooks!
 - [x] Change webpack-serve to webpack-dev-server
-- [ ] Upgrade react-emotion version
+- [ ] Upgrade to react-emotion@10
 - [ ] SSR capability (renderer service)
 - [ ] Containerize using docker for easy installation
 

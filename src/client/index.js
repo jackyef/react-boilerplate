@@ -1,11 +1,18 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { hydrate, render } from 'react-dom';
+import Loadable from 'react-loadable';
 import { createBrowserHistory } from 'history';
 
-import App from './app';
-import createReduxStore from './redux';
+import App from './App';
 
 const history = createBrowserHistory();
-const store = createReduxStore(history);
 
-ReactDOM.render(<App history={history} store={store} />, document.getElementById('root'));
+Loadable.preloadReady().then(() => {
+  const container = document.getElementById('root');
+  const bootstrap = window.isSSR ? hydrate : render;
+  const props = {
+    history,
+  };
+
+  bootstrap(<App {...props} />, container);
+});

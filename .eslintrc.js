@@ -8,7 +8,7 @@ module.exports = {
       jsx: true,
     },
   },
-  plugins: ['react', 'import', 'jest'],
+  plugins: ['react', 'import', 'jest', 'react-hooks'],
   env: {
     amd: true,
     browser: true,
