@@ -18,6 +18,7 @@ server.listen(PORT, err => {
 
 if (module.hot) {
   module.hot.accept('./index', () => {
+    console.log('changed');
     server.removeListener('request', currentApp);
     currentApp = app.callback();
     server.on('request', currentApp);

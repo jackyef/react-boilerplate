@@ -4,6 +4,7 @@ require('dotenv').config();
 import path from 'path';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import LoadableWebpackPlugin from '@loadable/webpack-plugin';
 import CompressionPlugin from 'compression-webpack-plugin';
 
 import { ifDev, isProd } from './build-utils';
@@ -11,34 +12,18 @@ import { module as sharedModule, plugins as sharedPlugins } from './shared.confi
 
 export default {
   entry: {
-    client: ['./src/client/index.js'],
+    main: ['./src/client/index.js'],
   },
   target: 'web', // tells webpack that this build will be run in browsers
   output: {
     filename: ifDev('[name].js','[name].[hash].js'),
     path: path.resolve(__dirname, '../dist/client'),
+    publicPath: `http://${process.env.CLIENT_HOST}:${process.env.CLIENT_PORT}/`,
   },
   module: {
     ...sharedModule,
     rules: [
       ...sharedModule.rules,
-      {
-        test: /\.(png|jpe?g|gif|svg)$/, 
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name (_file) {
-                if (process.env.NODE_ENV === 'development') {
-                  return '[path][name].[ext]';
-                } else {
-                  return '[hash].[ext]';
-                }
-              }
-            },
-          }
-        ]
-      },
     ],
   },
   plugins: [
@@ -46,6 +31,9 @@ export default {
     new CompressionPlugin(),
     new HtmlWebpackPlugin({ template: 'src/client/index.html' }),
     new webpack.HashedModuleIdsPlugin(),
+    new LoadableWebpackPlugin({
+      writeToDisk: true,
+    }),
   ],
   optimization: {
     nodeEnv: ifDev('development', 'production'),

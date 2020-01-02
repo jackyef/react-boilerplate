@@ -1,7 +1,7 @@
-import Loadable from 'react-loadable';
+import React from 'react';
+import loadable from '@loadable/component';
 import { LoaderFullscreen } from '../../components/Loader';
 
-export const AboutView = Loadable({
-  loader: () => import(/* webpackChunkName: "about-view" */ './View'),
-  loading: LoaderFullscreen,
+export const AboutView = loadable(() => import(/* webpackChunkName: "about-view" */ './View'), {
+  fallback: <LoaderFullscreen />,
 });

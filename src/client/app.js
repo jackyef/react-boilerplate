@@ -1,13 +1,16 @@
 import React from 'react';
 import { object } from 'prop-types';
 import { hot } from 'react-hot-loader/root';
-import RouterProvider from './routes';
+import { Router } from 'react-router-dom';
+import Routes from './routes';
 import ContextProvider from './context';
 
 const App = ({ history }) => {
   return (
     <ContextProvider>
-      <RouterProvider history={history} />
+      <Router  history={history}>
+        <Routes />
+      </Router>
     </ContextProvider>
   );
 };

@@ -1,7 +1,7 @@
-import Loadable from 'react-loadable';
+import React from 'react';
+import loadable from '@loadable/component';
 import { LoaderFullscreen } from '../../components/Loader';
 
-export const HomeView = Loadable({
-  loader: () => import(/* webpackChunkName: "home-view" */ './View'),
-  loading: LoaderFullscreen,
+export const HomeView = loadable(() => import(/* webpackChunkName: "home-view" */ './View'), {
+  fallback: <LoaderFullscreen />,
 });

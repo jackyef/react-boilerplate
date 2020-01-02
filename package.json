@@ -32,7 +32,7 @@
       }
     },
     "dev:server": {
-      "command": "babel-node --max-old-space-size=4096 webpack/scripts/build",
+      "command": "babel-node --max-old-space-size=4096 webpack/scripts/dev.server",
       "env": {
         "DEBUG": "webpack*, server*, build*",
         "DIR": "server",
@@ -67,11 +67,16 @@
   },
   "homepage": "https://github.com/jackyef/react-boilerplate#readme",
   "dependencies": {
+    "@loadable/component": "^5.11.0",
+    "@loadable/server": "^5.11.0",
+    "@loadable/webpack-plugin": "^5.7.1",
     "app-root-dir": "^1.0.2",
+    "babel-plugin-lodash": "^3.3.4",
     "better-npm-run": "^0.1.1",
     "compression": "^1.7.2",
     "dotenv": "^6.0.0",
     "emotion": "^9.2.3",
+    "emotion-server": "9",
     "fs-extra": "^7.0.1",
     "history": "^4.7.2",
     "koa": "^2.7.0",
@@ -106,6 +111,7 @@
     "@babel/preset-react": "7.0.0",
     "@babel/register": "7.0.0",
     "@babel/runtime": "^7.4.4",
+    "@loadable/babel-plugin": "^5.11.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "babel-plugin-console": "^0.2.1",
@@ -132,7 +138,7 @@
     "webpack": "^4.12.0",
     "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.0.6",
-    "webpack-dev-server": "^3.3.1",
+    "webpack-dev-server": "^3.10.1",
     "webpack-node-externals": "^1.7.2",
     "webpack-serve": "^1.0.4"
   },

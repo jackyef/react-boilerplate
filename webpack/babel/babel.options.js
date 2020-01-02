@@ -20,7 +20,7 @@ const babelClientEnvironment = {
     '@babel/plugin-syntax-dynamic-import',
     ['@babel/plugin-transform-destructuring', { useBuiltIns: true }],
     ['@babel/plugin-transform-runtime', { helpers: false, regenerator: true }],
-    'react-loadable/babel',
+    '@loadable/babel-plugin',
     ['emotion', { autoLabel: isDev, hoist: isProd, sourceMap: isDev }],
     ifDev('react-hot-loader/babel'),
     ifDev('console'),
@@ -41,6 +41,7 @@ const babelNodeEnvironment = {
         useBuiltIns: 'entry',
       },
     ],
+    ['@babel/preset-react', { development: isDev, useBuiltIns: true }],
   ],
   plugins: [
     'babel-plugin-macros',
@@ -55,6 +56,8 @@ const babelNodeEnvironment = {
     ['@babel/plugin-transform-destructuring', { useBuiltIns: true }],
     ['@babel/plugin-transform-runtime', { helpers: false, regenerator: true }],
     ifDev('console'),
+    '@loadable/babel-plugin',
+    ['emotion', { autoLabel: isDev, hoist: isProd, sourceMap: isDev }],
     'lodash',
   ].filter(Boolean),
 };

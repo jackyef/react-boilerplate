@@ -14,7 +14,24 @@ module.exports = {
           loaders: 'babel-loader',
           options: isServer ? babelConfig.server : babelConfig.client,
         }],
-      }
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/, 
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name (_file) {
+                if (process.env.NODE_ENV === 'development') {
+                  return '[name].[ext]';
+                } else {
+                  return '[contenthash].[ext]';
+                }
+              }
+            },
+          }
+        ]
+      },
     ],
   },
 
