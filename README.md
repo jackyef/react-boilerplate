@@ -1,4 +1,4 @@
-# React-Boilerplate
+# react-boilerplate
 This is a react-boilerplate created for personal learning
 
 It includes some dummy components to help you get started and understand the boilerplate structure.
@@ -33,7 +33,7 @@ Currently the bundles size are as follow:
 - [x] Remove redux, replace it with a GlobalContext with hooks!
 - [x] Change webpack-serve to webpack-dev-server
 - [ ] Upgrade to react-emotion@10
-- [ ] SSR capability (renderer service)
+- [x] SSR
 - [ ] Containerize using docker for easy installation
 
 ## Commands
@@ -45,3 +45,11 @@ Currently the bundles size are as follow:
 | yarn build:server   | to build optimized server bundle                               |
 | yarn dev:server     | to start development server for the server renderer            |
 | yarn dev:client     | run webpack-dev-server with hot reload enabled for development | 
+
+
+## Stack
+- React
+- Koa
+- Emotion
+- @loadable/component
+- React Router

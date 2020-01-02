@@ -7522,20 +7522,20 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.0, prop-types@^15.6.1, prop-types@^15.6.2:
-  version "15.6.2"
-  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
-  integrity sha512-3pboPvLiWD7dkI3qf3KbUe6hKFKa52w+AE0VCqECtf+QHAKgOL37tTaNCnuX1nAAQ4ZhyP+kYVKf8rLmJ/feDQ==
-  dependencies:
-    loose-envify "^1.3.1"
-    object-assign "^4.1.1"
-
 prop-types@^15.6.0:
   version "15.6.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.1.tgz#36644453564255ddda391191fb3a125cbdf654ca"
   integrity sha512-4ec7bY1Y66LymSUOH/zARVYObB23AT2h8cf6e/O6ZALB/N0sqZFEx7rq6EYPX2MkOdKORuooI/H5k9TlR4q7kQ==
   dependencies:
     fbjs "^0.8.16"
+    loose-envify "^1.3.1"
+    object-assign "^4.1.1"
+
+prop-types@^15.6.1, prop-types@^15.6.2:
+  version "15.6.2"
+  resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.2.tgz#05d5ca77b4453e985d60fc7ff8c859094a497102"
+  integrity sha512-3pboPvLiWD7dkI3qf3KbUe6hKFKa52w+AE0VCqECtf+QHAKgOL37tTaNCnuX1nAAQ4ZhyP+kYVKf8rLmJ/feDQ==
+  dependencies:
     loose-envify "^1.3.1"
     object-assign "^4.1.1"
 
@@ -7764,13 +7764,6 @@ react-lifecycles-compat@^3.0.4:
   version "3.0.4"
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
-
-react-loadable@^5.4.0:
-  version "5.4.0"
-  resolved "https://registry.yarnpkg.com/react-loadable/-/react-loadable-5.4.0.tgz#3b6b7d51121a7868fd155be848a36e02084742c9"
-  integrity sha512-HAFWL3aLB9dQA6OfGr7ACDNn/mv8jPUmBvXqrhJZfZgRhZysyNW8RupvGUbeGkTO+9frH1LTdJmKWphZENhlJg==
-  dependencies:
-    prop-types "^15.5.0"
 
 react-reconciler@^0.7.0:
   version "0.7.0"
@@ -9251,20 +9244,6 @@ uglifyjs-webpack-plugin@^1.2.4:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/uglifyjs-webpack-plugin/-/uglifyjs-webpack-plugin-1.2.5.tgz#2ef8387c8f1a903ec5e44fa36f9f3cbdcea67641"
   integrity sha512-hIQJ1yxAPhEA2yW/i7Fr+SXZVMp+VEI3d42RTHBgQd2yhp/1UdBcR3QEWPV5ahBxlqQDMEMTuTEvDHSFINfwSw==
-  dependencies:
-    cacache "^10.0.4"
-    find-cache-dir "^1.0.0"
-    schema-utils "^0.4.5"
-    serialize-javascript "^1.4.0"
-    source-map "^0.6.1"
-    uglify-es "^3.3.4"
-    webpack-sources "^1.1.0"
-    worker-farm "^1.5.2"
-
-uglifyjs-webpack-plugin@^1.2.7:
-  version "1.2.7"
-  resolved "https://registry.yarnpkg.com/uglifyjs-webpack-plugin/-/uglifyjs-webpack-plugin-1.2.7.tgz#57638dd99c853a1ebfe9d97b42160a8a507f9d00"
-  integrity sha512-1VicfKhCYHLS8m1DCApqBhoulnASsEoJ/BvpUpP4zoNAPpKzdH+ghk0olGJMmwX2/jprK2j3hAHdUbczBSy2FA==
   dependencies:
     cacache "^10.0.4"
     find-cache-dir "^1.0.0"
