@@ -33,5 +33,5 @@ jobs:
       - name: Install dependencies
         run: yarn
 
-      - name: Run test
-        run: yarn test
+      - name: Run test with coverage
+        run: yarn test:coverage
