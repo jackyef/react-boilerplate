@@ -1,13 +1,13 @@
 import React from 'react';
 import { hydrate, render } from 'react-dom';
-import Loadable from 'react-loadable';
+import { loadableReady } from '@loadable/component';
 import { createBrowserHistory } from 'history';
 
 import App from './app';
 
 const history = createBrowserHistory();
 
-Loadable.preloadReady().then(() => {
+const init = () => {
   const container = document.getElementById('root');
   const bootstrap = window.isSSR ? hydrate : render;
   const props = {
@@ -15,4 +15,11 @@ Loadable.preloadReady().then(() => {
   };
 
   bootstrap(<App {...props} />, container);
-});
+}
+
+if (!document.getElementById('content')?.hasChildNodes()) {
+  // no need to wait for loadableReady when not SSR-ing
+  init();
+} else {
+  loadableReady(init);
+}
