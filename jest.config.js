@@ -22,20 +22,13 @@ module.exports = {
 		'node'
 	],
   collectCoverageFrom: [
-    '<rootDir>/**/*.js',
+    '<rootDir>/src/**/*.js',
 
     // webpack configs
     '!**/webpack/**/*.js',
 
     // configs files
     '!**/*.config.js',
-
-    // entry points
-    '!<rootDir>/server/index.js',
-    '!<rootDir>/server/index.dev.js',
-    '!<rootDir>/client/index.js',
-    '!<rootDir>/client/app.js',
-    '!<rootDir>/client/routes/index.js',
 
     // Third party codes
     '!**/node_modules/**',
