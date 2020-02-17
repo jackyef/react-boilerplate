@@ -17,7 +17,7 @@ const init = () => {
   bootstrap(<App {...props} />, container);
 }
 
-if (!document.getElementById('content')?.hasChildNodes()) {
+if (!document.getElementById('root')?.hasChildNodes()) {
   // no need to wait for loadableReady when not SSR-ing
   init();
 } else {

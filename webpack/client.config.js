@@ -12,7 +12,10 @@ import { module as sharedModule, plugins as sharedPlugins } from './shared.confi
 
 export default {
   entry: {
-    main: ['./src/client/index.js'],
+    main: [
+			"core-js/modules/es.promise",
+			"core-js/modules/es.array.iterator",
+			'./src/client/index.js'],
   },
   target: 'web', // tells webpack that this build will be run in browsers
   output: {

@@ -1,5 +1,5 @@
-import React from 'react';
-import { renderToString } from 'react-dom/server';
+// import React from 'react';
+// import { renderToString } from 'react-dom/server';
 import serverMocks from './serverMocks';
 
 export default () => {

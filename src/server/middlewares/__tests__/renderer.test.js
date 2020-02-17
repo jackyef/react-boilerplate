@@ -5,6 +5,7 @@ describe('Renderer middleware tests', () => {
   rendererMocks();
 
   let renderer;
+
   beforeEach(() => {
     jest.isolateModules(() => {
       renderer = require('../renderer').default;

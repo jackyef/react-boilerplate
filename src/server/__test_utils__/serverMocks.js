@@ -7,6 +7,7 @@ export default () => {
         promises: actualFs.promises,
         readFileSync: (...args) => {
           const filePath = args[0];
+
           if (filePath.includes('assets.json')) {
             return '{}';
           }
@@ -16,6 +17,7 @@ export default () => {
 
         existsSync: (...args) => {
           const filePath = args[0];
+
           if (filePath.includes('assets.json')) {
             return true;
           }
