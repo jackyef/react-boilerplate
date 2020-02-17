@@ -6,7 +6,7 @@ module.exports = {
 	transform: {
 		'^.+\\.(js|jsx)$': '<rootDir>/node_modules/babel-jest',
 		'^.+\\.(css|less)$': '<rootDir>/jest-transformer/css.js',
-    '^(?!.*\\.(js|jsxcss|json)$)': '<rootDir>/jest-transformer/assets.js',
+    '^(?!.*\\.(js|jsx|css|less)$)': '<rootDir>/jest-transformer/assets.js',
 	},
 	transformIgnorePatterns: [
 		'[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$',
