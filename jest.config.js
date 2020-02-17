@@ -4,12 +4,12 @@ module.exports = {
 		"<rootDir>/src/**/*.{spec,test}.{js,jsx}"
 	],
 	transform: {
-		'^.+\\.(js|jsx|ts|tsx)$': '<rootDir>/node_modules/babel-jest',
+		'^.+\\.(js|jsx)$': '<rootDir>/node_modules/babel-jest',
 		'^.+\\.(css|less)$': '<rootDir>/jest-transformer/css.js',
-    '^(?!.*\\.(js|jsx|ts|tsx|css|json)$)': '<rootDir>/jest-transformer/assets.js',
+    '^(?!.*\\.(js|jsxcss|json)$)': '<rootDir>/jest-transformer/assets.js',
 	},
 	transformIgnorePatterns: [
-		'[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$',
+		'[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$',
 		'^.+\\.module\\.(css|less)$'
 	],
 	moduleNameMapper: {
