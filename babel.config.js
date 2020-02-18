@@ -13,9 +13,9 @@ module.exports = {
 		'@babel/plugin-proposal-optional-chaining',
 		'@babel/plugin-syntax-async-generators',
 		'@babel/plugin-syntax-dynamic-import',
-		'babel-plugin-transform-dynamic-import',
 		['@babel/plugin-transform-destructuring', { useBuiltIns: true }],
 		['@babel/plugin-transform-runtime', { helpers: false, regenerator: true }],
 		'babel-plugin-emotion',
+		'@loadable/babel-plugin',
 	],
 };

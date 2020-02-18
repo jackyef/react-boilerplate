@@ -20,7 +20,11 @@ const developmentPlugins = () => {
 
 const config = {
   entry: {
-    server: [ifDev('webpack/hot/poll?1000'), ifDev('./src/server/index.dev.js', './src/server/index.js')].filter(
+    server: [
+			"core-js/modules/es.promise",
+			"core-js/modules/es.array.iterator",
+			ifDev('webpack/hot/poll?1000'),
+			ifDev('./src/server/index.dev.js', './src/server/index.js')].filter(
       Boolean
     ),
   },

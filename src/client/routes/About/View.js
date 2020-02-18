@@ -1,22 +1,23 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { AboutContainer } from './styles';
-import { LoaderFullscreen } from '../../components/Loader';
+import { AboutContainer, WrapperFull, Cover, Content, LinkWrapper } from './styles';
 
-class About extends Component {
-  render() {
-    return (
-      <AboutContainer>
-        <div>
-          This is About.js 
-          <div>  
-            <Link to={'/'}>Go to home</Link>
-          </div>
-        </div>
-        <LoaderFullscreen />
-      </AboutContainer>
-    )
-  }
-}
+const About = () => {
+	return (
+		<AboutContainer>
+			<WrapperFull>
+				<Cover>
+					<Content>
+						<h1>React Boilerplate</h1>
+						<p>An opinionated react boilerplate created for personal learning</p>
+						<LinkWrapper>
+							<Link to={'/'}>Go to home</Link>
+						</LinkWrapper>
+					</Content>
+				</Cover>
+			</WrapperFull>
+		</AboutContainer>
+	);
+};
 
 export default About;

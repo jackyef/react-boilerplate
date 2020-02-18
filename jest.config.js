@@ -1,17 +1,13 @@
 module.exports = {
 	testMatch: [
-		"<rootDir>/src/**/__tests__/**/*.{js,jsx}",
 		"<rootDir>/src/**/*.{spec,test}.{js,jsx}"
 	],
 	transform: {
 		'^.+\\.(js|jsx)$': '<rootDir>/node_modules/babel-jest',
+		'^.+\\.(gql|graphql)$': '<rootDir>/node_modules/jest-transform-graphql',
 		'^.+\\.(css|less)$': '<rootDir>/jest-transformer/css.js',
-    '^(?!.*\\.(js|jsx|css|less)$)': '<rootDir>/jest-transformer/assets.js',
+    '^(?!.*\\.(js|jsx|css|less|gql|graphql)$)': '<rootDir>/jest-transformer/assets.js',
 	},
-	transformIgnorePatterns: [
-		'[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$',
-		'^.+\\.module\\.(css|less)$'
-	],
 	moduleNameMapper: {
 		'^.+\\.(css|less)$': 'identity-obj-proxy'
 	},
@@ -46,5 +42,6 @@ module.exports = {
     '!**/__mocks__/**',
     '!**/__data_mocks__/**',
     '!**/__gql_mocks__/**',
+    '!**/__test_utils__/**',
   ],
 };

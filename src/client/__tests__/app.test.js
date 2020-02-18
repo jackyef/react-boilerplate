@@ -13,6 +13,7 @@ describe('App', () => {
 
   test('should match snapshot', () => {
     const { container } = render(<App history={history}/>);
+
     expect(container).toBeInTheDocument();
   });
 });
