@@ -3,6 +3,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
 import { onError } from 'apollo-link-error';
 import { ApolloLink } from 'apollo-link';
+import fetch from 'unfetch';
 
 const client = new ApolloClient({
   link: ApolloLink.from([
@@ -18,7 +19,8 @@ const client = new ApolloClient({
     }),
     new HttpLink({
 			uri: window.__GRAPHQL_PROXY_ENABLE__ ? '/graphql' : window.__GRAPHQL_URI__,
-			credentials: 'include'
+			credentials: 'include',
+			fetch
     })
   ]),
   cache: new InMemoryCache().restore(window.__APOLLO_STATE__),

@@ -2,6 +2,7 @@ import { createMockContext } from '@shopify/jest-koa-mocks';
 import rendererMocks from '../../__test_utils__/rendererMocks';
 
 describe('Renderer middleware tests', () => {
+  global.__DEV__ = true;
   rendererMocks();
 
   let renderer;
